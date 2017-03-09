@@ -11,7 +11,7 @@ default:
 	${webpack}
 
 prod:
-	${webpack} --env.production -p
+	NODE_ENV=production ${webpack} --env.production -p
 
 watch-tsc:
 	${tsc} -w
