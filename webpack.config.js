@@ -9,8 +9,7 @@ module.exports = function (env) {
     var config = {
         context: __dirname,
         entry: {
-            app: "./src/app/index.tsx",
-            vendor: ['react', 'react-dom', 'lodash', 'react-router']
+            app: "./src/app/index.tsx"
         },
 
         output: {
@@ -66,7 +65,9 @@ module.exports = function (env) {
             new webpack.optimize.CommonsChunkPlugin({
                 name: 'vendor',
                 filename: 'vendor.bundle.js',
-                minChunks: Infinity
+                minChunks: function (module) {
+                    return module.context && module.context.indexOf('node_modules') !== -1;
+                }
             }),
 
             new htmlPlugin({
@@ -78,20 +79,22 @@ module.exports = function (env) {
 
     if (env.production) {
         config.plugins.unshift(new ExtractTextPlugin('style.css'));
-        config.plugins.push(new webpack.optimize.UglifyJsPlugin({
-            mangle: true,
-            compress: {
-                warnings: false,
-                sequences: true,
-                dead_code: true,
-                conditionals: true,
-                booleans: true, 
-                unused: true,
-                if_return: true,
-                join_vars: true,
-                drop_console: false
-            }
-        }))
+
+        // removed in favor of -p CLI flag
+        // config.plugins.push(new webpack.optimize.UglifyJsPlugin({
+        //     mangle: true,
+        //     compress: {
+        //         warnings: false,
+        //         sequences: true,
+        //         dead_code: true,
+        //         conditionals: true,
+        //         booleans: true, 
+        //         unused: true,
+        //         if_return: true,
+        //         join_vars: true,
+        //         drop_console: false
+        //     }
+        // }))
     }
 
     return config;
