@@ -56,6 +56,11 @@ module.exports = function (env) {
                     }) : ['style-loader', 'css-loader', 'autoprefixer-loader']
                 },
 
+                {
+                    test: /\.(ttf|eot|svg|woff|woff2)(\?.+)?$/,
+                    loader: 'file-loader?name=[hash:12].[ext]'
+                },
+
                 {test: /(\.js|\.jsx)$/, exclude: /node_modules/, loader: 'babel-loader'},
                 {test: /\.json$/, loader: 'json-loader'}
             ]

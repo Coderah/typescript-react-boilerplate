@@ -6,7 +6,8 @@ import { AppContainer } from 'react-hot-loader';
 
 import routes from './routes';
 
-import './index.scss';
+// import './index.scss';
+import 'element-theme-default';
 
 const rootEl = document.getElementById('root');
 
