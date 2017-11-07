@@ -1,8 +1,8 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import {Router, browserHistory} from 'react-router';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-import {AppContainer} from 'react-hot-loader';
+import { AppContainer } from 'react-hot-loader';
 
 import routes from './routes';
 
@@ -13,8 +13,8 @@ const rootEl = document.getElementById('root');
 function renderApp(child: typeof routes) {
     ReactDOM.render(
         <AppContainer>
-            <Router history={browserHistory}>
-                {child}
+            <Router>
+                { child }
             </Router>
         </AppContainer>
     , rootEl);

@@ -1,6 +1,5 @@
 import * as React from 'react';
-import {Route} from 'react-router';
-import { AppContainer } from 'app/containers/app';
+import { Route } from 'react-router-dom';
+import { AppContainer } from 'app/components/app';
 
-export default <Route path="/" component={AppContainer}>
-</Route>
+export default <Route path="/" component={AppContainer} />
