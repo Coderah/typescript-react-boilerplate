@@ -14,11 +14,10 @@ const rootEl = document.getElementById('root');
 function renderApp(child: typeof routes) {
     ReactDOM.render(
         <AppContainer>
-            <Router>
-                { child }
-            </Router>
-        </AppContainer>
-    , rootEl);
+            <Router>{child}</Router>
+        </AppContainer>,
+        rootEl
+    );
 }
 
 renderApp(routes);

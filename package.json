@@ -4,7 +4,14 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "src/*.{ts,tsx}": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "ava": {
     "concurrency": 5,
@@ -43,6 +50,7 @@
     "json-loader": "^0.5.4",
     "lodash": "^4.16.6",
     "node-sass": "^3.11.3",
+    "prettier": "^1.8.1",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-hot-loader": "^3.1.1",
@@ -54,5 +62,9 @@
     "typescript": "^2.6.1",
     "webpack": "^3.8.1",
     "webpack-dev-server": "^2.9.4"
+  },
+  "devDependencies": {
+    "husky": "^0.14.3",
+    "lint-staged": "^4.3.0"
   }
 }
